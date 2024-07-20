@@ -7,7 +7,7 @@ type navigationType = {
 };
 const Navigation = ({ loggedIn, onLogout }: navigationType) => {
   return (
-    <nav className="nav">
+    <div className="nav">
       <ul>
         {loggedIn && (
           <li>
@@ -25,7 +25,7 @@ const Navigation = ({ loggedIn, onLogout }: navigationType) => {
           </li>
         )}
       </ul>
-    </nav>
+    </div>
   );
 };
 

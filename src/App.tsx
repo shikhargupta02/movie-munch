@@ -29,11 +29,8 @@ function App() {
   return (
     <>
       <MainHeader loggedIn={isLoggedIn} logoutHandler={logoutHandler} />{" "}
-      <main>
-        {" "}
-        {!isLoggedIn && <Login onLogin={loginHandler} />}{" "}
-        {isLoggedIn && <Home onLogout={logoutHandler} />}{" "}
-      </main>
+      {!isLoggedIn && <Login onLogin={loginHandler} />}{" "}
+      {isLoggedIn && <Home onLogout={logoutHandler} />}{" "}
     </>
   );
 }

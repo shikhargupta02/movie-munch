@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-
+import "./card.scss";
 type cardType = {
   className: string;
   children: ReactNode;
