@@ -1,13 +1,13 @@
 import React, { useState, useReducer } from "react";
-
 import Card from "../UI/Card/Card";
 import "./login.scss";
 import Button from "../UI/Button/Button";
-type EmailAction = { type: "USER_INPUT" | "INPUT_BLUR"; val: string };
-type EmailState = { value: string; isValid: boolean | null };
-
-type PasswordAction = { type: "PASSWORD_INPUT" | "INPUT_BLUR"; val: string };
-type PasswordState = { value: string; isValid: boolean | null };
+import {
+  EmailAction,
+  EmailState,
+  PasswordAction,
+  PasswordState,
+} from "../common";
 
 const emailReducer = (state: EmailState, action: EmailAction): EmailState => {
   if (action.type === "USER_INPUT") {
@@ -38,7 +38,6 @@ const Login = ({ onLogin }: loginType) => {
   // const [enteredPassword, setEnteredPassword] = useState("");
   // const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
-
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
     isValid: null,
@@ -95,35 +94,35 @@ const Login = ({ onLogin }: loginType) => {
         <div
           className={`control ${emailState.isValid === false ? "invalid" : ""}`}
         >
-          <label htmlFor="email"> E - Mail </label>{" "}
+          <label htmlFor="email"> E - Mail </label>
           <input
             type="email"
             id="email"
             value={emailState.value}
             onChange={emailChangeHandler}
             onBlur={validateEmailHandler}
-          />{" "}
-        </div>{" "}
+          />
+        </div>
         <div
           className={`control ${
             passwordState.isValid === false ? "invalid" : ""
           }`}
         >
-          <label htmlFor="password"> Password </label>{" "}
+          <label htmlFor="password"> Password </label>
           <input
             type="password"
             id="password"
             value={passwordState.value}
             onChange={passwordChangeHandler}
             onBlur={validatePasswordHandler}
-          />{" "}
-        </div>{" "}
+          />
+        </div>
         <div className="actions">
           <Button type="submit" className="btn" disabled={!formIsValid}>
-            Login{" "}
-          </Button>{" "}
-        </div>{" "}
-      </form>{" "}
+            Login
+          </Button>
+        </div>
+      </form>
     </Card>
   );
 };
