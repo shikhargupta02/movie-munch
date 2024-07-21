@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import MainHeader from "./components/MainHeader/MainHeader";
+import axiosInstance from "./api/axiosConfig";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -14,9 +15,14 @@ function App() {
     }
   }, []);
 
-  const loginHandler = (email: string, password: string) => {
+  const loginHandler = async (email: string, password: string) => {
     // We should of course check email and password
     // But it's just a dummy/ demo anyways
+    const response = await axiosInstance.post("/registration/login", {
+      email: email,
+      password: password,
+    });
+    console.log(response);
     localStorage.setItem("isLoggedIn", "1");
     setIsLoggedIn(true);
   };
