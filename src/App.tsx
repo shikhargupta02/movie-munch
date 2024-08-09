@@ -4,10 +4,12 @@ import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import MainHeader from "./components/MainHeader/MainHeader";
 import axiosInstance from "./api/axiosConfig";
+import { Register } from "./components/registeration/Register";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const storedLoginStatus = localStorage.getItem("isLoggedIn");
     if (storedLoginStatus === "1") {
@@ -18,12 +20,12 @@ function App() {
   const loginHandler = async (email: string, password: string) => {
     // We should of course check email and password
     // But it's just a dummy/ demo anyways
-    const response = await axiosInstance.post("/registration/login", {
-      email: email,
-      password: password,
-    });
-    console.log(response);
-    localStorage.setItem("isLoggedIn", "1");
+    // const response: any = await axiosInstance.post("/registration/login", {
+    //   email: email,
+    //   password: password,
+    // });
+    localStorage.setItem("isLoggedIn", "response?.token");
+    navigate("/");
     setIsLoggedIn(true);
   };
 
@@ -34,9 +36,25 @@ function App() {
 
   return (
     <>
-      <MainHeader loggedIn={isLoggedIn} logoutHandler={logoutHandler} />
-      {!isLoggedIn && <Login onLogin={loginHandler} />}
-      {isLoggedIn && <Home onLogout={logoutHandler} />}
+      <Routes>
+        <Route
+          path="/"
+          Component={() => (
+            <Home loggedIn={isLoggedIn} onLogout={logoutHandler} />
+          )}
+        />
+        <Route
+          path="/login"
+          Component={() => <Login onLogin={loginHandler} />}
+        />
+        <Route
+          path="/register"
+          Component={() => <Register onLogin={loginHandler} />}
+        />
+
+        {/* <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} /> */}
+      </Routes>
     </>
   );
 }

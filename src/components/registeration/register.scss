@@ -1,0 +1,88 @@
+.register {
+  max-width: 30rem;
+  margin: 10% auto;
+  padding: 2rem;
+  .register-form-heading {
+    text-align: center;
+  }
+}
+
+.register-control {
+  margin: 1rem 0;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  & input {
+    display: block;
+    flex: 3;
+    font: inherit;
+    padding: 0.35rem 0.35rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  & input:focus {
+    outline: none;
+    border-color: #0efc00;
+    background: #d7ffe2;
+  }
+}
+.register-control.invalid input {
+  border-color: red;
+  background: #fbdada;
+}
+
+.register-actions {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .register-control {
+    align-items: center;
+    flex-direction: row;
+  }
+}
+.tick::before {
+  content: "\2714"; /* Tick symbol */
+  color: green;
+  margin-right: 5px;
+}
+
+.cross::before {
+  content: "\2716"; /* Cross symbol */
+  color: red;
+  margin-right: 5px;
+}
+.hide-password-rules-tooltip {
+  display: none;
+}
+
+.show-password-rules-tooltip {
+  //     width: fit-content;
+  //   opacity: 0.9;
+  //   visibility: visible;
+  //   transition: opacity 0.5s, visibility 0.5s;
+  //   background-color: white;
+  //   z-index: 1;
+  //   border: 1px solid #741188;
+  //   padding: 10px;
+  //   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  //   list-style-type: none;
+
+  border-radius: 12px;
+  width: fit-content;
+  opacity: 0.9;
+  /* visibility: visible; */
+  /* transition: opacity 0.5s, visibility 0.5s; */
+  padding: 10px;
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+  list-style-type: none;
+  width: fit-content;
+}
+.password-valid {
+  background-color: #00800017;
+  border: 1px solid #008000c9;
+}
+.password-invalid {
+  background-color: #ffa8a866;
+  border: 1px solid #ff000061;
+}

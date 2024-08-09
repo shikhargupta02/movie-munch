@@ -8,7 +8,7 @@ type mainHeaderType = {
 const MainHeader = ({ loggedIn, logoutHandler }: mainHeaderType) => {
   return (
     <header className="main-header">
-      <h1>A Typical Page</h1>
+      <h1>Movie Munch</h1>
       <Navigation loggedIn={loggedIn} onLogout={logoutHandler} />
     </header>
   );

@@ -2,14 +2,19 @@ import React from "react";
 
 import Card from "../UI/Card/Card";
 import "./home.scss";
+import MainHeader from "../MainHeader/MainHeader";
 type homeType = {
+  loggedIn: boolean;
   onLogout: () => void;
 };
-const Home = ({ onLogout }: homeType) => {
+const Home = ({ loggedIn, onLogout }: homeType) => {
   return (
-    <Card className="home">
-      <h1>Welcome back!</h1>
-    </Card>
+    <>
+      <MainHeader loggedIn={loggedIn} logoutHandler={onLogout} />
+      <Card className="home">
+        <h1>Welcome back!</h1>
+      </Card>
+    </>
   );
 };
 
